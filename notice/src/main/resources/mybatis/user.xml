@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.itbank.repository.NoticeUserDAO">
+	
+	<insert id="userInsert" parameterType="user">
+		insert into 
+			notice_user (userid, userpw, usernick, gender, phone) 
+		values (
+				#{userid},
+				#{userpw},
+				#{userNick},
+				#{gender},
+				#{phone}
+				)
+	</insert>
+	
+	<select id="userLogin" parameterType="user" resultType="user">
+		select * 
+			from notice_user 
+		where userid=#{userid} and userpw=#{userpw}
+	</select>
+	
+
+</mapper>

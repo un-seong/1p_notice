@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.itbank.repository.NoticeTableDAO">
+
+	<insert id="insertTable" parameterType="table">
+		insert into 
+			notice_table (category, title, memo, pwcheck) 
+		values (
+				#{category},
+				#{title},
+				#{memo},
+				#{pwcheck}
+			)
+	</insert>
+
+	<select id="selectTable" resultType="table">
+		select * from notice_table order by idx
+	</select>
+
+	<select id="selectOneTable" resultType="table" parameterType="int">
+		select 
+			* 
+			from notice_table
+		where idx=#{idx}
+	</select>
+	
+	<select id="selectCategoryList" resultType="table" parameterType="String">
+		select
+			*
+			from notice_table
+		where category=#{category}
+	</select>
+	
+	<delete id="deleteCheck" parameterType="String">
+		delete from 
+			notice_table 
+		where pwcheck=#{userpw}
+	</delete>
+	
+</mapper>
+
+	
